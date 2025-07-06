@@ -15,15 +15,7 @@ export function Sidebar() {
   const navigate = useNavigate();
   const userQuery = useUserQuery();
 
-  if (userQuery.isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (userQuery.isError) {
-    return <div>Error: {userQuery.error.message}</div>;
-  }
-
-  const clients = userQuery.data?.user.firm.clients || [];
+  const clients = userQuery.data.user.firm.clients;
 
   return (
     <Drawer

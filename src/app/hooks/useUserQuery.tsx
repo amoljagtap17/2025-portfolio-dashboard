@@ -1,4 +1,4 @@
-import { queryOptions, useQuery } from "@tanstack/react-query";
+import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import request from "graphql-request";
 import { graphql } from "../../gql/gql";
 
@@ -32,5 +32,7 @@ function userQueryOptions(userId: string) {
 }
 
 export function useUserQuery() {
-  return useQuery(userQueryOptions("a1cd8eeb-f2a6-4265-87e4-d4c28bb0abc8"));
+  return useSuspenseQuery(
+    userQueryOptions("a1cd8eeb-f2a6-4265-87e4-d4c28bb0abc8")
+  );
 }

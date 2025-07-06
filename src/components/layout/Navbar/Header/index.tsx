@@ -4,15 +4,7 @@ import { useUserQuery } from "../../../../app/hooks";
 export function Header() {
   const userQuery = useUserQuery();
 
-  if (userQuery.isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (userQuery.isError) {
-    return <div>Error: {userQuery.error.message}</div>;
-  }
-
-  const firm = userQuery.data?.user.firm.name;
+  const firm = userQuery.data.user.firm.name;
 
   return (
     <Box

@@ -1,9 +1,14 @@
-import { ThemeProvider, Typography } from "@mui/material";
+import { Button, ThemeProvider, Typography } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQueryErrorResetBoundary,
+} from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
+import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { App } from "./App.tsx";
 import { theme } from "./app/theme";
@@ -23,10 +28,26 @@ const queryClient = new QueryClient({
 });
 
 function Main() {
+  const { reset } = useQueryErrorResetBoundary();
+
   return (
-    <AppLayout>
-      <App />
-    </AppLayout>
+    <ErrorBoundary
+      onReset={reset}
+      fallbackRender={({ resetErrorBoundary }) => (
+        <Typography variant="h6" color="error">
+          There was an error!
+          <Button variant="contained" onClick={() => resetErrorBoundary()}>
+            Try again
+          </Button>
+        </Typography>
+      )}
+    >
+      <Suspense fallback={<Typography>Loading...</Typography>}>
+        <AppLayout>
+          <App />
+        </AppLayout>
+      </Suspense>
+    </ErrorBoundary>
   );
 }
 
