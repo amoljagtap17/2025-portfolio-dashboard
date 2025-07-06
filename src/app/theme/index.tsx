@@ -9,7 +9,7 @@ let theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#0542A5",
+      main: "#263238",
       contrastText: "#fff",
     },
     secondary: {
