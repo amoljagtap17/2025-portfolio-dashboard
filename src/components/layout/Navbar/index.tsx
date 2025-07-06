@@ -1,8 +1,11 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
+import { useNavigate } from "react-router";
 import { Header } from "./Header";
 
 function Menu() {
+  const navigate = useNavigate();
+
   return (
     <IconButton
       size="large"
@@ -10,6 +13,9 @@ function Menu() {
       color="inherit"
       aria-label="menu"
       sx={{ mr: 2 }}
+      onClick={() => {
+        navigate("/");
+      }}
     >
       <MenuIcon />
     </IconButton>
