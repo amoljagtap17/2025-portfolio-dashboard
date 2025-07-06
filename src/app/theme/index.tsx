@@ -36,6 +36,18 @@ let theme = createTheme({
     h2: { fontWeight: 600, fontSize: "1.5rem", color: "#19B5FC" },
     body1: { fontSize: "1rem", color: "#182B43" },
   },
+  components: {
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: "#eeeeee",
+          color: "#182B43",
+          width: 240,
+          boxSizing: "border-box",
+        },
+      },
+    },
+  },
 });
 
 theme = responsiveFontSizes(theme);

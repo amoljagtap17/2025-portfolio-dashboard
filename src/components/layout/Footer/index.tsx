@@ -2,7 +2,12 @@ import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 
 export function Footer() {
   return (
-    <AppBar position="static" square elevation={0}>
+    <AppBar
+      position="static"
+      square
+      elevation={0}
+      sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+    >
       <Toolbar disableGutters={false}>
         <Box
           display="flex"

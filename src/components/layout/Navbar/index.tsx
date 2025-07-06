@@ -17,7 +17,12 @@ function Menu() {
 
 export function Navbar() {
   return (
-    <AppBar position="static" square elevation={0}>
+    <AppBar
+      position="fixed"
+      square
+      elevation={0}
+      sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+    >
       <Toolbar disableGutters={false}>
         <Menu />
         <Box
