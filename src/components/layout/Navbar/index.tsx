@@ -1,5 +1,6 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
+import { Header } from "./Header";
 
 function Menu() {
   return (
@@ -31,9 +32,7 @@ export function Navbar() {
           alignItems="center"
           flexGrow={1}
         >
-          <Typography variant="h6" component="div">
-            Firm Name | ANALYSIS & REPORTING
-          </Typography>
+          <Header />
           <Box
             width={100}
             display="flex"

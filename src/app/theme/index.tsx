@@ -32,9 +32,9 @@ let theme = createTheme({
   },
   typography: {
     fontFamily: ["Roboto", "Arial", "sans-serif"].join(","),
-    h1: { fontWeight: 700, fontSize: "2rem", color: "#0542A5" },
-    h2: { fontWeight: 600, fontSize: "1.5rem", color: "#19B5FC" },
-    body1: { fontSize: "1rem", color: "#182B43" },
+    h1: { fontWeight: 700, fontSize: "2rem" },
+    h2: { fontWeight: 600, fontSize: "1.5rem" },
+    body1: { fontSize: "1rem" },
   },
   components: {
     MuiDrawer: {
