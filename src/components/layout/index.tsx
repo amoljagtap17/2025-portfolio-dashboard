@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
 
@@ -10,8 +10,7 @@ export function AppLayout({ children }: IAppLayoutProps) {
   return (
     <Box display="flex" flexDirection="column" minHeight="100vh">
       <Navbar />
-      <Container
-        maxWidth="lg"
+      <Box
         sx={{
           flexGrow: 1,
           position: "relative",
@@ -21,7 +20,7 @@ export function AppLayout({ children }: IAppLayoutProps) {
         }}
       >
         {children}
-      </Container>
+      </Box>
       <Footer />
     </Box>
   );
