@@ -6,10 +6,23 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import Toolbar from "@mui/material/Toolbar";
+import { useUserQuery } from "../../../../app/hooks";
 
 const drawerWidth = 240;
 
 export function Sidebar() {
+  const userQuery = useUserQuery();
+
+  if (userQuery.isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (userQuery.isError) {
+    return <div>Error: {userQuery.error.message}</div>;
+  }
+
+  const clients = userQuery.data?.user.firm.clients || [];
+
   return (
     <Drawer
       variant="permanent"
@@ -33,10 +46,10 @@ export function Sidebar() {
             </ListSubheader>
           }
         >
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text) => (
-            <ListItem key={text} disablePadding>
+          {clients.map(({ id, name }) => (
+            <ListItem key={id} disablePadding>
               <ListItemButton>
-                <ListItemText primary={text} />
+                <ListItemText primary={name} />
               </ListItemButton>
             </ListItem>
           ))}

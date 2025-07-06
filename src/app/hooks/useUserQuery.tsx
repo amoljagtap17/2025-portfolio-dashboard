@@ -15,15 +15,6 @@ const userWithVariablesqueryDocument = graphql(/* GraphQL */ `
         clients {
           id
           name
-          accounts {
-            id
-            accountType
-            accountNumber
-            client {
-              id
-              name
-            }
-          }
         }
       }
     }

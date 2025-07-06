@@ -306,18 +306,7 @@ export type UserQuery = {
       __typename?: "Firm";
       id: string;
       name: string;
-      clients: Array<{
-        __typename?: "Client";
-        id: string;
-        name: string;
-        accounts: Array<{
-          __typename?: "Account";
-          id: string;
-          accountType: string;
-          accountNumber: string;
-          client: { __typename?: "Client"; id: string; name: string };
-        }>;
-      }>;
+      clients: Array<{ __typename?: "Client"; id: string; name: string }>;
     };
   };
 };
@@ -386,50 +375,6 @@ export const UserDocument = {
                             {
                               kind: "Field",
                               name: { kind: "Name", value: "name" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "accounts" },
-                              selectionSet: {
-                                kind: "SelectionSet",
-                                selections: [
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "id" },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: {
-                                      kind: "Name",
-                                      value: "accountType",
-                                    },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: {
-                                      kind: "Name",
-                                      value: "accountNumber",
-                                    },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "client" },
-                                    selectionSet: {
-                                      kind: "SelectionSet",
-                                      selections: [
-                                        {
-                                          kind: "Field",
-                                          name: { kind: "Name", value: "id" },
-                                        },
-                                        {
-                                          kind: "Field",
-                                          name: { kind: "Name", value: "name" },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
                             },
                           ],
                         },

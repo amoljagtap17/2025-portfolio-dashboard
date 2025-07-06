@@ -5,7 +5,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App.tsx";
-import { useUserQuery } from "./app/hooks/useUserQuery.tsx";
 import { theme } from "./app/theme";
 import { AppLayout } from "./components/layout";
 
@@ -22,16 +21,6 @@ const queryClient = new QueryClient({
 });
 
 function Main() {
-  const userQuery = useUserQuery();
-
-  if (userQuery.isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (userQuery.isError) {
-    return <div>Error: {userQuery.error.message}</div>;
-  }
-
   return (
     <AppLayout>
       <App />

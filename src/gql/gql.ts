@@ -14,10 +14,10 @@ import * as types from "./graphql";
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-  "\n  query User($userId: ID!) {\n    user(id: $userId) {\n      id\n      username\n      email\n      displayName\n      firm {\n        id\n        name\n        clients {\n          id\n          name\n          accounts {\n            id\n            accountType\n            accountNumber\n            client {\n              id\n              name\n            }\n          }\n        }\n      }\n    }\n  }\n": typeof types.UserDocument;
+  "\n  query User($userId: ID!) {\n    user(id: $userId) {\n      id\n      username\n      email\n      displayName\n      firm {\n        id\n        name\n        clients {\n          id\n          name\n        }\n      }\n    }\n  }\n": typeof types.UserDocument;
 };
 const documents: Documents = {
-  "\n  query User($userId: ID!) {\n    user(id: $userId) {\n      id\n      username\n      email\n      displayName\n      firm {\n        id\n        name\n        clients {\n          id\n          name\n          accounts {\n            id\n            accountType\n            accountNumber\n            client {\n              id\n              name\n            }\n          }\n        }\n      }\n    }\n  }\n":
+  "\n  query User($userId: ID!) {\n    user(id: $userId) {\n      id\n      username\n      email\n      displayName\n      firm {\n        id\n        name\n        clients {\n          id\n          name\n        }\n      }\n    }\n  }\n":
     types.UserDocument,
 };
 
@@ -39,8 +39,8 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  query User($userId: ID!) {\n    user(id: $userId) {\n      id\n      username\n      email\n      displayName\n      firm {\n        id\n        name\n        clients {\n          id\n          name\n          accounts {\n            id\n            accountType\n            accountNumber\n            client {\n              id\n              name\n            }\n          }\n        }\n      }\n    }\n  }\n"
-): (typeof documents)["\n  query User($userId: ID!) {\n    user(id: $userId) {\n      id\n      username\n      email\n      displayName\n      firm {\n        id\n        name\n        clients {\n          id\n          name\n          accounts {\n            id\n            accountType\n            accountNumber\n            client {\n              id\n              name\n            }\n          }\n        }\n      }\n    }\n  }\n"];
+  source: "\n  query User($userId: ID!) {\n    user(id: $userId) {\n      id\n      username\n      email\n      displayName\n      firm {\n        id\n        name\n        clients {\n          id\n          name\n        }\n      }\n    }\n  }\n"
+): (typeof documents)["\n  query User($userId: ID!) {\n    user(id: $userId) {\n      id\n      username\n      email\n      displayName\n      firm {\n        id\n        name\n        clients {\n          id\n          name\n        }\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
