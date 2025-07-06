@@ -1,6 +1,6 @@
-import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
+import { Outlet } from "react-router";
 import { Sidebar } from "./components/sections";
 
 export function App() {
@@ -9,9 +9,7 @@ export function App() {
       <Sidebar />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
-        <Typography variant="h4" gutterBottom>
-          Welcome to the Dashboard
-        </Typography>
+        <Outlet />
       </Box>
     </Box>
   );

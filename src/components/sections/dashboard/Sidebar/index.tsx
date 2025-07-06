@@ -6,11 +6,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import Toolbar from "@mui/material/Toolbar";
+import { useNavigate } from "react-router";
 import { useUserQuery } from "../../../../app/hooks";
 
 const drawerWidth = 240;
 
 export function Sidebar() {
+  const navigate = useNavigate();
   const userQuery = useUserQuery();
 
   if (userQuery.isLoading) {
@@ -48,7 +50,7 @@ export function Sidebar() {
         >
           {clients.map(({ id, name }) => (
             <ListItem key={id} disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={() => navigate(`/${id}`)}>
                 <ListItemText primary={name} />
               </ListItemButton>
             </ListItem>
