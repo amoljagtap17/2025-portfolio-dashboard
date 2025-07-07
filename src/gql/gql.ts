@@ -14,9 +14,12 @@ import * as types from "./graphql";
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
+  "\n  query AccountsByClientId($clientId: ID!) {\n    accountsByClientId(clientId: $clientId) {\n      id\n      accountNumber\n    }\n  }\n": typeof types.AccountsByClientIdDocument;
   "\n  query User($userId: ID!) {\n    user(id: $userId) {\n      id\n      username\n      email\n      displayName\n      firm {\n        id\n        name\n        clients {\n          id\n          name\n        }\n      }\n    }\n  }\n": typeof types.UserDocument;
 };
 const documents: Documents = {
+  "\n  query AccountsByClientId($clientId: ID!) {\n    accountsByClientId(clientId: $clientId) {\n      id\n      accountNumber\n    }\n  }\n":
+    types.AccountsByClientIdDocument,
   "\n  query User($userId: ID!) {\n    user(id: $userId) {\n      id\n      username\n      email\n      displayName\n      firm {\n        id\n        name\n        clients {\n          id\n          name\n        }\n      }\n    }\n  }\n":
     types.UserDocument,
 };
@@ -35,6 +38,12 @@ const documents: Documents = {
  */
 export function graphql(source: string): unknown;
 
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  query AccountsByClientId($clientId: ID!) {\n    accountsByClientId(clientId: $clientId) {\n      id\n      accountNumber\n    }\n  }\n"
+): (typeof documents)["\n  query AccountsByClientId($clientId: ID!) {\n    accountsByClientId(clientId: $clientId) {\n      id\n      accountNumber\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

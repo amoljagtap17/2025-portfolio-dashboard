@@ -290,6 +290,19 @@ export type User = {
   username: Scalars["String"]["output"];
 };
 
+export type AccountsByClientIdQueryVariables = Exact<{
+  clientId: Scalars["ID"]["input"];
+}>;
+
+export type AccountsByClientIdQuery = {
+  __typename?: "Query";
+  accountsByClientId: Array<{
+    __typename?: "Account";
+    id: string;
+    accountNumber: string;
+  }>;
+};
+
 export type UserQueryVariables = Exact<{
   userId: Scalars["ID"]["input"];
 }>;
@@ -311,6 +324,61 @@ export type UserQuery = {
   };
 };
 
+export const AccountsByClientIdDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "AccountsByClientId" },
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "clientId" },
+          },
+          type: {
+            kind: "NonNullType",
+            type: { kind: "NamedType", name: { kind: "Name", value: "ID" } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "accountsByClientId" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "clientId" },
+                value: {
+                  kind: "Variable",
+                  name: { kind: "Name", value: "clientId" },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "accountNumber" },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  AccountsByClientIdQuery,
+  AccountsByClientIdQueryVariables
+>;
 export const UserDocument = {
   kind: "Document",
   definitions: [

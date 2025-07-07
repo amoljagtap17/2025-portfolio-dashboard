@@ -68,7 +68,17 @@ createRoot(document.getElementById("root")!).render(
                   </Typography>
                 }
               />
-              <Route path=":clientId" element={<ClientView />} />
+              <Route path=":clientId" element={<ClientView />}>
+                <Route
+                  index
+                  element={
+                    <Typography variant="body1">
+                      Select Account from above to view the Dashboard
+                    </Typography>
+                  }
+                />
+                <Route path=":accountId" element={<div>account</div>} />
+              </Route>
             </Route>
           </Routes>
         </BrowserRouter>
