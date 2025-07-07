@@ -303,6 +303,54 @@ export type AccountsByClientIdQuery = {
   }>;
 };
 
+export type HoldingsByAccountQueryVariables = Exact<{
+  accountId: Scalars["ID"]["input"];
+}>;
+
+export type HoldingsByAccountQuery = {
+  __typename?: "Query";
+  holdingsByAccount: Array<{
+    __typename?: "Holding";
+    id: string;
+    marketValue: number;
+    price: number;
+    quantity: number;
+    asOfDate: any;
+    security: {
+      __typename?: "Security";
+      id: string;
+      cusip: string;
+      isin: string;
+      name: string;
+      securityType: string;
+      ticker: string;
+      assetAllocation: {
+        __typename?: "AssetAllocation";
+        broadAssetClass: { __typename?: "BroadAssetClass"; label: string };
+        assetClass: { __typename?: "AssetClass"; label: string };
+        subClass: { __typename?: "SubClass"; label: string };
+        style: { __typename?: "Style"; label: string };
+      };
+    };
+    performanceReturn?: {
+      __typename?: "PerformanceReturn";
+      entityType: string;
+      id: string;
+      mdtReturnPercent: number;
+      qtdReturnPercent: number;
+      ytdReturnPercent: number;
+      benchmarkReturnPercent: number;
+      asOfDate: any;
+      benchmark?: {
+        __typename?: "Benchmark";
+        id: string;
+        code: string;
+        label: string;
+      } | null;
+    } | null;
+  }>;
+};
+
 export type UserQueryVariables = Exact<{
   userId: Scalars["ID"]["input"];
 }>;
@@ -378,6 +426,198 @@ export const AccountsByClientIdDocument = {
 } as unknown as DocumentNode<
   AccountsByClientIdQuery,
   AccountsByClientIdQueryVariables
+>;
+export const HoldingsByAccountDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "HoldingsByAccount" },
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "accountId" },
+          },
+          type: {
+            kind: "NonNullType",
+            type: { kind: "NamedType", name: { kind: "Name", value: "ID" } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "holdingsByAccount" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "accountId" },
+                value: {
+                  kind: "Variable",
+                  name: { kind: "Name", value: "accountId" },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                { kind: "Field", name: { kind: "Name", value: "marketValue" } },
+                { kind: "Field", name: { kind: "Name", value: "price" } },
+                { kind: "Field", name: { kind: "Name", value: "quantity" } },
+                { kind: "Field", name: { kind: "Name", value: "asOfDate" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "security" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "cusip" } },
+                      { kind: "Field", name: { kind: "Name", value: "isin" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "securityType" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "ticker" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "assetAllocation" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "broadAssetClass" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "label" },
+                                  },
+                                ],
+                              },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "assetClass" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "label" },
+                                  },
+                                ],
+                              },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "subClass" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "label" },
+                                  },
+                                ],
+                              },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "style" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "label" },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "performanceReturn" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "entityType" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "mdtReturnPercent" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "qtdReturnPercent" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "ytdReturnPercent" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "benchmarkReturnPercent" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "asOfDate" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "benchmark" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "code" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "label" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  HoldingsByAccountQuery,
+  HoldingsByAccountQueryVariables
 >;
 export const UserDocument = {
   kind: "Document",

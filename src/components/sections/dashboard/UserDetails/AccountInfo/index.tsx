@@ -10,14 +10,14 @@ import { useNavigate, useParams } from "react-router";
 import { useAccountsByClientIdQuery } from "../../../../../app/hooks";
 
 export function AccountInfo() {
-  const { clientId } = useParams();
+  const { clientId, accountId } = useParams();
   const navigate = useNavigate();
   const accountsByClientIdQuery = useAccountsByClientIdQuery(clientId!);
 
   const accounts = accountsByClientIdQuery.data.accountsByClientId;
 
   const handleChange = (event: SelectChangeEvent) => {
-    navigate(`/${event.target.value}`);
+    navigate(`/${clientId}/${event.target.value}`);
   };
 
   return (
@@ -28,6 +28,7 @@ export function AccountInfo() {
           labelId="account-select-label"
           id="account-select"
           label="Accounts"
+          value={accountId || ""}
           onChange={handleChange}
         >
           {accounts.map((account) => (
